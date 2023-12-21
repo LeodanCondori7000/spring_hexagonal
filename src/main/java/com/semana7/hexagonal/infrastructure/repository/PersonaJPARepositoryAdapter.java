@@ -9,8 +9,11 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 @Component
 public class PersonaJPARepositoryAdapter implements PersonaOut {
+    private final PersonaJPARepository personaJPARepository;
     @Autowired
-    private PersonaJPARepository personaJPARepository;
+    public PersonaJPARepositoryAdapter(PersonaJPARepository personaJPARepository) {
+        this.personaJPARepository = personaJPARepository;
+    }
     @Override
     public Persona createPersona(Persona persona) {
         PersonaEntity personaEntity = PersonaEntity.fromDomainModel(persona);
